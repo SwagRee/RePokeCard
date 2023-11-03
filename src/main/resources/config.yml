@@ -1,0 +1,116 @@
+id: 339
+data: 0
+mt:
+  name: "&b梦特卡"
+  lore:
+    - "&e设置指定精灵为梦特"
+shiny:
+  name: "&b闪光卡"
+  lore:
+    - "&e设置指定精灵为闪光"
+maxLevel:
+  name: "&b满级卡"
+  lore:
+    - "&e设置指定精灵为满级"
+clearLevel:
+  name: "&b等级清空卡"
+  lore:
+    - "&e清除指定精灵等级"
+gender:
+  name: "&b性别卡"
+  lore:
+    - "&e反转指定精灵的性别"
+clearEvs:
+  name: "&b努力值清空卡"
+  lore:
+    - "&e清除指定精灵努力值"
+maxIvs:
+  name: "&b个体6V卡"
+  lore:
+    - "&e给指定精灵6V"
+anyIvs:
+  name: "&b指定个体V卡"
+  lore:
+    - "&e给指定精灵指定V"
+anyEvs:
+  name: "&b指定努力值为满卡"
+  lore:
+    - "&e给指定精灵努力值为满"
+anyGrowth:
+  name: "&b自选体型卡"
+  lore:
+    - "&e给指定精灵指定体型"
+rdGrowth:
+  name: "&b随机体型卡"
+  lore:
+    - "&e让精灵修改随机体型"
+anyNature:
+  name: "&b指定性格卡"
+  lore:
+    - "&e让指定精灵指定性格"
+rdNature:
+  name: "&b随机性格卡"
+  lore:
+    - "&e让指定精灵随机性格"
+form:
+  name: "&b形态卡"
+  lore:
+    - "&e让指定精灵变成指定形态"
+formLegendary:
+  name: "&b神兽形态卡"
+  lore:
+    - "&e让指定神兽变成指定形态"
+formCommon:
+  name: "&b普通宝可梦形态卡"
+  lore:
+    - "&e让普通宝可梦变成指定形态"
+move:
+  name: "&b技能卡"
+  lore:
+    - "&e让指定精灵学习指定技能"
+pokeBall:
+  name: "&b改球卡"
+  lore:
+    - "&e让指定精灵修改球种"
+bind:
+  name: "&b绑定卡"
+  lore:
+    - "&e让指定精灵不可交易"
+unbind:
+  name: "&b解绑卡"
+  lore:
+    - "&e让指定精灵可交易"
+unBreed:
+  name: "&b解绝育卡"
+  lore:
+    - "&e让指定精灵可繁殖"
+hatch:
+  name: "&b秒孵卡"
+  lore:
+    - "&e让指定蛋秒孵化"
+#转换精灵相片的gui界面，设置好标题可以阻止绑定的转换
+guiTitle: "精灵信息面板"
+invSlot: [10, 13, 16, 28, 31, 34]
+eggCommand:
+  - "pokeegg"
+  - "pokee"
+lore:
+  - "&f"
+  - "&a ▶ &b等级: &f%LEVEL% "
+  - "&a ▶ &b个体信息"
+  - "&f  ▪ &a血量:&f %IVS_HP% &a攻击:&f %IVS_Attack%"
+  - "&f  ▪ &a速度:&f %IVS_Speed% &a防御:&f %IVS_Defence%"
+  - "&f  ▪ &a特攻:&f %IVS_SpecialAttack% &a特防:&f %IVS_SpecialDefence%"
+  - "&a ▶ &b努力值信息"
+  - "&f  ▪ &a血量:&f %EVS_HP% &a攻击:&f %EVS_Attack%"
+  - "&f  ▪ &a速度:&f %EVS_Speed% &a防御:&f %EVS_Defence%"
+  - "&f  ▪ &a特攻:&f %EVS_SpecialAttack% &a特防:&f %EVS_SpecialDefence%"
+  - "&a ▶ &b基础信息:"
+  - "&f  ▪ &a闪光: &f%Shiny%"
+  - "&f  ▪ &a特性: &f%Ability%"
+  - "&f  ▪ &a性格: &f%Nature%"
+  - "&f  ▪ &a体型: &f%Growth%"
+  - "&f  ▪ &a性别: &f%Gender%"
+  - "&f  ▪ &a绑定: &f%BIND%"
+  - "&f  ▪ &a昵称: &f%Nick_Name%"
+

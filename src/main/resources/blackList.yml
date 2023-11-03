@@ -1,0 +1,14 @@
+blackList:
+  mt:
+    - "百变怪"
+  anyIvs:
+    - "百变怪"
+  maxIvs:
+    - "百变怪"
+  form:
+    - "百变怪"
+blackMessage:
+  mt: "§c不允许用卡片将%pokemon%修改为梦特！"
+  anyIvs: "§c不允许用卡片将%pokemon%修改个体！"
+  maxIvs: "§c不允许用卡片将%pokemon%修改为6V！"
+  form: "§c%pokemon%的形态不允许修改"
