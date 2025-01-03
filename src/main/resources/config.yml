@@ -1,0 +1,165 @@
+id: 339
+data: 0
+enableBind: true
+mt:
+  name: "&b梦特卡"
+  lore:
+    - "&e设置指定精灵为梦特"
+shiny:
+  name: "&b闪光卡"
+  lore:
+    - "&e设置指定精灵为闪光"
+unShiny:
+  name: "&b解闪光卡"
+  lore:
+    - "&e取消指定精灵的闪光状态"
+maxLevel:
+  name: "&b满级卡"
+  lore:
+    - "&e设置指定精灵为满级"
+clearLevel:
+  name: "&b等级清空卡"
+  lore:
+    - "&e清除指定精灵等级"
+gender:
+  name: "&b性别卡"
+  lore:
+    - "&e反转指定精灵的性别"
+clearEvs:
+  name: "&b努力值清空卡"
+  lore:
+    - "&e清除指定精灵努力值"
+maxIvs:
+  name: "&b个体6V卡"
+  lore:
+    - "&e给指定精灵6V"
+anyIvs:
+  name: "&b指定个体V卡"
+  lore:
+    - "&e给指定精灵指定V"
+anyZeroIvs:
+  name: "&b指定个体为0卡"
+  lore:
+    - "&b指定个体为0卡"
+anyEvs:
+  name: "&b指定努力值为满卡"
+  lore:
+    - "&e给指定精灵努力值为满"
+anyGrowth:
+  name: "&b自选体型卡"
+  lore:
+    - "&e给指定精灵指定体型"
+rdGrowth:
+  name: "&b随机体型卡"
+  lore:
+    - "&e让精灵修改随机体型"
+anyNature:
+  name: "&b指定性格卡"
+  lore:
+    - "&e让指定精灵指定性格"
+rdNature:
+  name: "&b随机性格卡"
+  lore:
+    - "&e让指定精灵随机性格"
+form:
+  name: "&b形态卡"
+  lore:
+    - "&e让指定精灵变成指定形态"
+rdForm:
+  name: "&b随机形态卡"
+  lore:
+    - "&e让指精灵变成随机形态"
+formLegendary:
+  name: "&b神兽形态卡"
+  lore:
+    - "&e让指定神兽变成指定形态"
+formCommon:
+  name: "&b普通宝可梦形态卡"
+  lore:
+    - "&e让普通宝可梦变成指定形态"
+formDetail:
+  name: "&b指定形态卡"
+  lore:
+    - "&e让指精灵变成指定形态"
+    - "&eop右键打开选择宝可梦形态 然后给普通玩家使用即可"
+move:
+  name: "&b技能卡"
+  lore:
+    - "&e让指定精灵学习指定技能"
+pokeBall:
+  name: "&b改球卡"
+  lore:
+    - "&e让指定精灵修改球种"
+bind:
+  name: "&b绑定卡"
+  lore:
+    - "&e让指定精灵不可交易"
+unbind:
+  name: "&b解绑卡"
+  lore:
+    - "&e让指定精灵可交易"
+breed:
+  name: "&b绝育卡"
+  lore:
+    - "&e让指定精灵绝育"
+unBreed:
+  name: "&b解绝育卡"
+  lore:
+    - "&e让指定精灵可繁殖"
+hatch:
+  name: "&b秒孵卡"
+  lore:
+    - "&e让指定蛋秒孵化"
+
+#是否显示蛋的详情信息 不显示则默认显示步数信息
+eggDetail: false
+
+#形态详情卡修改后 卡的lore
+cardDetailDataLore:
+  - "&e{pokemon}的{form}形态修改卡"
+  - "&a形态编号:{slot}"
+
+reloadMessage: "&b重载插件成功"
+
+helpMessage:
+  - "&f<-----======= §b热宝可梦卡§b §f=======----->"
+  - "&e/rpc 玩家 [类型] 数量 §f- 给予指定的宝可梦卡"
+  - "&e/rpc list §f- 查看卡的类型"
+  - "&e/rpc reload §f- 重载插件"
+cardListMessage:
+  - "&7<&f-----======= &b热宝可梦卡&f =======-----&7>"
+  - "&bmt&f梦特卡    &bshiny&f闪光卡"
+  - "&bunShiny&f解闪光    &bmaxLevel&f满级卡"
+  - "&bclearLevel&f等级清空卡    &bgender&f性别卡"
+  - "&bclearEvs&f努力值清空    &bmaxIvs&f满V卡"
+  - "&banyIvs&f任意V    &banyZeroIvs&f任意0V卡"
+  - "&banyEvs&f任意努力值    &brdGrowth&f随机体型卡"
+  - "&banyGrowth&f任意体型卡    &banyNature&f任意性格卡"
+  - "&brdNature&f随机性格    &bform&f形态卡"
+  - "&brdForm&f随机形态卡    &bformLegendary&f神兽形态卡"
+  - "&bformCommon&f普通宝可梦形态    &bformDetail&f指定宝可梦形态卡"
+  - "&bmove&f技能卡    &bpokeBall&f改球种卡"
+  - "&bbind&f绑定卡    &bunbind&f解绑卡"
+  - "&bbreed&f绝育卡    &bunBreed&f解绝育卡"
+  - "&bhatch&f秒孵"
+
+lore:
+  - "&f"
+  - "&a ▶ &b等级: &f%LEVEL% "
+  - "&a ▶ &b个体信息"
+  - "&f  ▪ &a血量:&f %IVS_HP% &a攻击:&f %IVS_Attack%"
+  - "&f  ▪ &a速度:&f %IVS_Speed% &a防御:&f %IVS_Defence%"
+  - "&f  ▪ &a特攻:&f %IVS_SpecialAttack% &a特防:&f %IVS_SpecialDefence%"
+  - "&a ▶ &b努力值信息"
+  - "&f  ▪ &a血量:&f %EVS_HP% &a攻击:&f %EVS_Attack%"
+  - "&f  ▪ &a速度:&f %EVS_Speed% &a防御:&f %EVS_Defence%"
+  - "&f  ▪ &a特攻:&f %EVS_SpecialAttack% &a特防:&f %EVS_SpecialDefence%"
+  - "&a ▶ &b基础信息:"
+  - "&f  ▪ &a闪光: &f%Shiny%"
+  - "&f  ▪ &a特性: &f%Ability%"
+  - "&f  ▪ &a性格: &f%Nature%"
+  - "&f  ▪ &a体型: &f%Growth%"
+  - "&f  ▪ &a性别: &f%Gender%"
+  - "&f  ▪ &a绑定: &f%BIND%"
+  - "&f  ▪ &a昵称: &f%Nick_Name%"
+

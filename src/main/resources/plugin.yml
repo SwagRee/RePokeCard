@@ -1,0 +1,6 @@
+name: RePokeCard
+version: '2.8'
+main: io.github.swagree.pokecard.Main
+commands:
+  rpc:
+    description: SwagRee's RePokeCard Plugin can change pokemon's many properties by some cards;
