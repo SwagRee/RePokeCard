@@ -1,76 +1,72 @@
 package io.github.swagree.pokecard;
 
 import io.github.swagree.pokecard.command.CommandCard;
-import io.github.swagree.pokecard.event.EventExtra;
-import io.github.swagree.pokecard.event.EventMain;
-import io.github.swagree.pokecard.gui.*;
-import io.github.swagree.pokecard.papi.PapiRegister;
-import io.github.swagree.pokecard.util.YmlUtil;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
+import io.github.swagree.pokecard.event.DetailList.EventGuiDetailMain;
+import io.github.swagree.pokecard.event.DetailList.EventGuiDetailPokeForm;
+import io.github.swagree.pokecard.event.DetailList.EventGuiDetailPokeMove;
+import io.github.swagree.pokecard.event.EventGuiMain;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.Map;
 
 public class Main extends JavaPlugin {
     public static Main plugin;
-    private YamlConfiguration blackListConfig;
+
+    @Override
     public void onEnable() {
-        Bukkit.getConsoleSender().sendMessage("§7[RePokeCard] §b作者§fSwagRee §cQQ:§f352208610");
+        // 初始化插件实例
+        plugin = this;
 
-        Bukkit.getPluginManager().registerEvents(new EventMain(), this);
-        Bukkit.getPluginManager().registerEvents(new EventExtra(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyIvs(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyEvs(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyGrowth(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyNature(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyForm(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyFormLegendaryOrFormCommon(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyPokeBall(), this);
-        Bukkit.getPluginManager().registerEvents(new GuiModifyPokeMove(), this);
+        // 控制台输出插件启用信息
+        Bukkit.getConsoleSender().sendMessage(String.format("§7[%s] §b作者§fSwagRee §cQQ:§f352208610", getName()));
 
+        // 注册事件监听器
+        Bukkit.getPluginManager().registerEvents(new EventGuiMain(), this);
+        Bukkit.getPluginManager().registerEvents(new EventGuiDetailMain(), this);
+        Bukkit.getPluginManager().registerEvents(new EventGuiDetailPokeMove(), this);
+        Bukkit.getPluginManager().registerEvents(new EventGuiDetailPokeForm(), this);
+
+        // 注册命令执行器
         getCommand("rpc").setExecutor(new CommandCard());
 
-        PapiRegister papiRegister = new PapiRegister();
-        if(!papiRegister.isRegistered()){
-            papiRegister.register();
-        }
-
-
+        // 加载配置文件
         loadConfig();
-
-
-        plugin = this;
     }
 
-    public void onDisable() {
-
-    }
-    public void loadConfig() {
-
-        getDataFolder().mkdirs();
-
-        File customConfigFile = new File(getDataFolder(), "message.yml");
-        if (!customConfigFile.exists()) {
-            saveResource("message.yml", false);
+    /**
+     * 初始化和加载配置文件
+     */
+    private void loadConfig() {
+        // 创建插件数据文件夹
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
         }
+        // 初始化配置文件
+        initConfigFile("message.yml");
+        initConfigFile("blackList.yml");
+        initConfigFile("afterbind.yml");
+        initConfigFile("afterunbreed.yml");
+        initConfigFile("gui.yml");
+        initConfigFile("giveItemData.yml");
+        initConfigFile("log.yml");
+        initConfigFile("commands.yml");
 
-        File blackListFile = new File(getDataFolder(), "blackList.yml");
-
-        if (!blackListFile.exists()) {
-            saveResource("blackList.yml", false);
-        }
-
-
-        this.saveConfig();
-        this.saveDefaultConfig();
-
-        this.reloadConfig();
-
-
+        // 保存默认配置文件并重新加载
+        saveDefaultConfig();
+        reloadConfig();
     }
 
-
+    /**
+     * 通用方法：检查并初始化配置文件
+     *
+     * @param fileName 配置文件名
+     */
+    private void initConfigFile(String fileName) {
+        File configFile = new File(getDataFolder(), fileName);
+        if (!configFile.exists()) {
+            saveResource(fileName, false);
+            Bukkit.getConsoleSender().sendMessage(String.format("§7[%s] §a已生成默认配置文件：%s", getName(), fileName));
+        }
+    }
 }

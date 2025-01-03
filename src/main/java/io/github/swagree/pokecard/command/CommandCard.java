@@ -1,6 +1,5 @@
 package io.github.swagree.pokecard.command;
 
-import com.google.common.base.Charsets;
 import io.github.swagree.pokecard.util.ItemUtil;
 import io.github.swagree.pokecard.Main;
 import io.github.swagree.pokecard.enums.EnumCardName;
@@ -10,138 +9,159 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
+
+import org.bukkit.util.Consumer;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class CommandCard implements CommandExecutor,TabExecutor {
-    public static Map<String, FileConfiguration> configData;
-    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command1, String label, String[] args) {
+
+public class CommandCard implements CommandExecutor, TabExecutor {
+
+    public boolean onCommand(CommandSender sender, Command command1, String label, String[] args) {
+        if (!sender.isOp()) {
+            YmlUtil.sendColorItemMessage((Player) sender, "noOP");
+            return true;
+        }
+
         if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
-            sender.sendMessage("§b<§m*-----=======§b热宝可梦卡§b §m=======-----§b>");
-            sender.sendMessage("§e/rpc 玩家 [类型] 数量 §f- 给予指定的宝可梦卡");
-            sender.sendMessage("§e/rpc list §f- 查看卡的类型");
-            sender.sendMessage("§e/rpc reload §f- 重载插件");
+            sendHelp(sender);
             return true;
         }
 
-        if (args[0].equalsIgnoreCase("reload")) {
-            Main.plugin.reloadConfig();
+        switch (args[0].toLowerCase()) {
+            case "reload":
+                reloadAllConfig(sender);
+                return true;
+            case "list":
+                sendCardList(sender);
+                return true;
+            default:
+                return handleCardCommands(sender, args);
+        }
+    }
 
-            File fileBlackList = new File(Main.plugin.getDataFolder(),"blackList.yml");
-            YamlConfiguration blacklist = YamlConfiguration.loadConfiguration(fileBlackList);
-            YmlUtil.setBlacklist(blacklist);
-
-            File fileMessage = new File(Main.plugin.getDataFolder(),"message.yml");
-            YamlConfiguration message = YamlConfiguration.loadConfiguration(fileMessage);
-            YmlUtil.setMessage(message);
-            sender.sendMessage("§b重载插件成功");
-            return true;
-        }
-        if (args[0].equalsIgnoreCase("list")) {
-            sender.sendMessage("§7<§f-----======= §b热宝可梦卡§f =======-----§7>");
-            String s = "";
-            int count = 0;
-        for(EnumCardName e:EnumCardName.values()){
-            s = s+"§b"+e.getCardName() + "§f"+e.getCardNameCN()+"卡" +"    ";
-            count++;
-            if(count==2){
-                sender.sendMessage(s);
-                s = "";
-                count=0;
-            }
-        }
-        }
+    private boolean handleCardCommands(CommandSender sender, String[] args) {
         if (args.length == 2) {
-            if (!sender.isOp()) {
-                YmlUtil.sendColorItemMessage((Player) sender,"noOP");
-                return true;
-            }
-            String playername = args[0];
-            String cardName = args[1];
-            Player p = Bukkit.getPlayer(playername);
-            int num = 1;
-            if (p == null) {
-                YmlUtil.sendColorItemMessage((Player) sender,"noPlayer",playername,cardName,num);
-                return true;
-            }
-            try {
-                p.getInventory().addItem(new ItemStack[]{ItemUtil.addItemToPlayer(num, cardName)});
-                YmlUtil.sendColorItemMessage((Player) sender,"success",playername,cardName,num);
-            } catch (Exception e) {
-                YmlUtil.sendColorItemMessage((Player) sender,"error",playername,cardName,num);
-            }
-            return true;
+            return cardBooleanForMessage(sender, args);
         }
         if (args.length == 3) {
-            if (!sender.isOp()) {
-                YmlUtil.sendColorItemMessage((Player) sender,"noOP");
-                return true;
-            }
-            String playername = args[0];
-            String cardName = args[1];
-            Player p = Bukkit.getPlayer(playername);
-            int num = 1;
-            try{
-                num = Integer.parseInt(args[2]);
-            }catch (Exception ee){
-                YmlUtil.sendColorItemMessage((Player) sender,"error",playername,cardName,num);
-                return true;
-            }
+            return addItemToPlayer(sender, args);
+        }
+        return false;
+    }
 
-            if (p == null) {
-                YmlUtil.sendColorItemMessage((Player) sender,"noPlayer",playername,cardName,num);
-                return true;
-            }
-            try {
-                p.getInventory().addItem(new ItemStack[]{ItemUtil.addItemToPlayer(num, cardName)});
-                YmlUtil.sendColorItemMessage((Player) sender,"success",playername,cardName,num);
-            } catch (Exception e) {
-                YmlUtil.sendColorItemMessage((Player) sender,"error",playername,cardName,num);
-            }
+    private void sendCardList(CommandSender sender) {
+        List<String> stringList = Main.plugin.getConfig().getStringList("cardListMessage");
+        stringList.forEach(s -> sender.sendMessage(s.replace("&", "§")));
+    }
+
+    private boolean addItemToPlayer(CommandSender sender, String[] args) {
+        String playername = args[0];
+        String cardName = args[1];
+        Player p = getPlayer(playername);
+        int num = parseNumber(args[2], sender, playername, cardName);
+
+        if (p == null) {
+            YmlUtil.sendColorItemMessage(sender, "noPlayer", playername, cardName, num);
             return true;
         }
-        return true;
+        try {
+            p.getInventory().addItem(ItemUtil.addItemToPlayer(num, cardName));
+            YmlUtil.sendColorItemMessage(sender, "success", playername, cardName, num);
+        } catch (Exception e) {
+            YmlUtil.sendColorItemMessage(sender, "error", playername, cardName, num);
+        }
+        return false;
+    }
+
+    private int parseNumber(String arg, CommandSender sender, String playername, String cardName) {
+        try {
+            return Integer.parseInt(arg);
+        } catch (Exception e) {
+            YmlUtil.sendColorItemMessage(sender, "error", playername, cardName, 1);
+            return 1;
+        }
+    }
+
+    private static void reloadAllConfig(CommandSender sender) {
+        Main.plugin.reloadConfig();
+        loadConfigFile("blackList.yml", YmlUtil::setBlacklist);
+        loadConfigFile("message.yml", YmlUtil::setMessage);
+        loadConfigFile("afterbind.yml", YmlUtil::setBindList);
+        loadConfigFile("afterunbreed.yml", YmlUtil::setUnBreedList);
+        loadConfigFile("gui.yml", YmlUtil::setGui);
+        loadConfigFile("giveItemData.yml", YmlUtil::setItemData);
+        loadConfigFile("commands.yml", YmlUtil::setCommands);
+
+        sender.sendMessage(Main.plugin.getConfig().getString("reloadMessage").replace("&", "§"));
+    }
+
+    private static void loadConfigFile(String fileName, Consumer<YamlConfiguration> consumer) {
+        File file = new File(Main.plugin.getDataFolder(), fileName);
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
+        consumer.accept(config);
+    }
+
+    private static void sendHelp(CommandSender sender) {
+        List<String> stringList = Main.plugin.getConfig().getStringList("helpMessage");
+        stringList.forEach(s -> sender.sendMessage(s.replace("&", "§")));
+    }
+
+    private boolean cardBooleanForMessage(CommandSender sender, String[] args) {
+        String playername = args[0];
+        String cardName = args[1];
+        Player p = getPlayer(playername);
+        int num = 1;
+
+        if (p == null) {
+            YmlUtil.sendColorItemMessage(sender, "noPlayer", playername, cardName, num);
+            return true;
+        }
+        try {
+            p.getInventory().addItem(ItemUtil.addItemToPlayer(num, cardName));
+            YmlUtil.sendColorItemMessage(sender, "success", playername, cardName, num);
+        } catch (Exception e) {
+            YmlUtil.sendColorItemMessage(sender, "error", playername, cardName, num);
+        }
+        return false;
+    }
+
+    private Player getPlayer(String playername) {
+        return Bukkit.getPlayer(playername);
     }
 
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        List<String> tablist = new ArrayList<>();
         if (args.length == 1) {
-            String prefix = args[0];
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                String name = player.getName();
-                if (name.toLowerCase().startsWith(prefix.toLowerCase())) { // 将前缀和玩家ID都转换为小写进行比较
-                    tablist.add(name);
-                }
-            }
-            return tablist;
+            return getMatchingPlayers(args[0]);
         }
         if (args.length == 2) {
-            String prefix = args[1]; // 获取输入的前缀
-            for (EnumCardName e : EnumCardName.values()) {
-                String cardName = e.getCardName();
-                if (cardName.startsWith(prefix)) { // 判断是否与前缀匹配（忽略大小写）
-                    tablist.add(cardName);
-                }
-            }
-            return tablist;
+            return getMatchingCardNames(args[1]);
         }
         return Collections.emptyList();
     }
 
-}
+    private List<String> getMatchingPlayers(String prefix) {
+        List<String> tablist = new ArrayList<>();
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            String name = player.getName();
+            if (name.toLowerCase().startsWith(prefix.toLowerCase())) {
+                tablist.add(name);
+            }
+        }
+        return tablist;
+    }
 
+    private List<String> getMatchingCardNames(String prefix) {
+        List<String> tablist = new ArrayList<>();
+        for (EnumCardName e : EnumCardName.values()) {
+            String cardName = e.getCardName();
+            if (cardName.toLowerCase().startsWith(prefix.toLowerCase())) {
+                tablist.add(cardName);
+            }
+        }
+        return tablist;
+    }
+}

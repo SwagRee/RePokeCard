@@ -1,0 +1,113 @@
+#使用xx卡后执行自定义命令 方便你做一些操作 比如搭配给成就点数
+mt:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+shiny:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+UnShiny:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+maxLevel:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+clearLevel:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+gender:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+clearEvs:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+maxIvs:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+anyIvs:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+anyZeroIvs:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+anyEvs:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+rdGrowth:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+anyGrowth:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+anyNature:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+rdNature:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+form:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+rdForm:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+formLegendary:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+formCommon:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+formDetail:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+move:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+pokeBall:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+bind:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+unbind:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+breed:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+unBreed:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+hatch:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"
+Ability:
+  enable: false
+  commands:
+    - "msg %player% 恭喜你使用了这张卡"

@@ -1,0 +1,22 @@
+#这是设置哪个卡使用之后 自动绝育宝可梦的 让宝可梦无法繁殖
+message: "§e您使用了这张卡，已为您自动绝育宝可梦"
+mt: false
+shiny: false
+maxLevel: false
+clearLevel: false
+gender: false
+clearEvs: false
+maxIvs: false
+anyIvs: false
+anyEvs: false
+rdGrowth: false
+anyGrowth: false
+anyNature: false
+rdNature: false
+form: false
+rdForm : false
+formLegendary: false
+formCommon: false
+move: false
+pokeBall: false
+hatch: false

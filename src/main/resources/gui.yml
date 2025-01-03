@@ -1,0 +1,736 @@
+Gui:
+  onlyGui:
+    #mt修改界面
+    mt:
+      title: "&8梦特修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    shiny:
+      title: "&8闪光修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    unShiny:
+      title: "&8解闪修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    maxLevel:
+      title: "&8满级修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    clearLevel:
+      title: "&8等级清空修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    gender:
+      title: "&8性别修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    clearEvs:
+      title: "&8努力值清空界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    maxIvs:
+      title: "&86v修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    anyZeroIvs:
+      title: "&80V修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    rdGrowth:
+      title: "&8随机修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    rdNature:
+      title: "&8随机性格界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    rdForm:
+      title: "&8随机形态界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    bind:
+      title: "&8绑定界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    unbind:
+      title: "&8解绑界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    breed:
+      title: "&8绝育界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    unBreed:
+      title: "&8解绝育界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    hatch:
+      title: "&8秒孵界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    anyIvs:
+      title: "&8任意个体界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    anyEvs:
+      title: "&8任意努力值界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    anyGrowth:
+      title: "&8任意体型界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    anyNature:
+      title: "&8任意性格界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    form:
+      title: "&8形态卡界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    formLegendary:
+      title: "&8神兽形态卡界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    formCommon:
+      title: "&8普通形态卡界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    formDetail:
+      title: "&8形态详情修改界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    move:
+      title: "&8宝可梦技能界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+    pokeBall:
+      title: "&8宝可梦球界面"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+  needNextHolder:
+    anyZeroIvs:
+      title: "&8选择一只项个体修改为0"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6  "
+        - ""
+      item:
+        1:
+          data: paper
+          name: "&e修改HP"
+          lore:
+            - "&b修改HP"
+        2:
+          data: paper
+          name: "&e修改攻击"
+          lore:
+            - "&b修改攻击"
+        3:
+          data: paper
+          name: "&e修改防御"
+          lore:
+            - "&b修改防御"
+        4:
+          data: paper
+          name: "&e修改特攻"
+          lore:
+            - "&b修改特攻"
+        5:
+          data: paper
+          name: "&e修改特防"
+          lore:
+            - "&b修改特防"
+        6:
+          data: paper
+          name: "&e修改速度"
+          lore:
+            - "&b修改速度"
+    anyIvs:
+      title: "&8选择一只项个体修改为31"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+      item:
+        1:
+          data: paper
+          name: "&e修改HP"
+          lore:
+            - "&b修改HP"
+        2:
+          data: paper
+          name: "&e修改攻击"
+          lore:
+            - "&b修改攻击"
+        3:
+          data: paper
+          name: "&e修改防御"
+          lore:
+            - "&b修改防御"
+        4:
+          data: paper
+          name: "&e修改特攻"
+          lore:
+            - "&b修改特攻"
+        5:
+          data: paper
+          name: "&e修改特防"
+          lore:
+            - "&b修改特防"
+        6:
+          data: paper
+          name: "&e修改速度"
+          lore:
+            - "&b修改速度"
+    anyEvs:
+      title: "&8选择一只项努力值修改为252"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - ""
+        - "  4 5 6   "
+        - ""
+      item:
+        1:
+          data: paper
+          name: "&e修改HP"
+          lore:
+            - "&b修改HP"
+        2:
+          data: paper
+          name: "&e修改攻击"
+          lore:
+            - "&b修改攻击"
+        3:
+          data: paper
+          name: "&e修改防御"
+          lore:
+            - "&b修改防御"
+        4:
+          data: paper
+          name: "&e修改特攻"
+          lore:
+            - "&b修改特攻"
+        5:
+          data: paper
+          name: "&e修改特防"
+          lore:
+            - "&b修改特防"
+        6:
+          data: paper
+          name: "&e修改速度"
+          lore:
+            - "&b修改速度"
+    anyGrowth:
+      title: "&8选择你喜欢的体型吧"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - "  1 2 3  "
+        - "  4 5 6  "
+        - "  7 8 C   "
+        - ""
+      item:
+        1:
+          data: paper
+          name: "&e修改为袖珍"
+          lore:
+            - "&e修改为袖珍"
+        2:
+          data: paper
+          name: "&e修改迷你"
+          lore:
+            - "&e修改迷你"
+        3:
+          data: paper
+          name: "&e修改侏儒"
+          lore:
+            - "&e修改侏儒"
+        4:
+          data: paper
+          name: "&e修改娇小"
+          lore:
+            - "&e修改娇小"
+        5:
+          data: paper
+          name: "&e修改普通"
+          lore:
+            - "&e修改普通"
+        6:
+          data: paper
+          name: "&e修改高大"
+          lore:
+            - "&e修改高大"
+        7:
+          data: paper
+          name: "&e修改巨人"
+          lore:
+            - "&e修改巨人"
+        8:
+          data: paper
+          name: "&e修改庞大"
+          lore:
+            - "&e修改庞大"
+        C:
+          data: paper
+          name: "&e修改巨大"
+          lore:
+            - "&e修改巨大"
+    pokeBall:
+      title: "&8选择你喜欢的球种吧"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - " 1234567  "
+        - " 89ABCDE  "
+        - " FGHIJKL   "
+        - " MNOPQRS"
+        - ""
+      item:
+        1:
+          data: pixelmon_poke_ball
+          name: "精灵球"
+          lore:
+            - ""
+        2:
+          data: pixelmon_great_ball
+          name: "超级球"
+          lore:
+            - ""
+        3:
+          data: pixelmon_ultra_ball
+          name: "高级球"
+          lore:
+            - ""
+        4:
+          data: pixelmon_master_ball
+          name: "大师球"
+          lore:
+            - ""
+        5:
+          data: pixelmon_level_ball
+          name: "等级球"
+          lore:
+            - ""
+        6:
+          data: pixelmon_moon_ball
+          name: "月亮球"
+          lore:
+            - ""
+        7:
+          data: pixelmon_friend_ball
+          name: "友友球"
+          lore:
+            - ""
+        8:
+          data: pixelmon_love_ball
+          name: "甜蜜球"
+          lore:
+            - ""
+        9:
+          data: pixelmon_safari_ball
+          name: "狩猎球"
+          lore:
+            - ""
+        A:
+          data: pixelmon_heavy_ball
+          name: "沉重球"
+          lore:
+            - ""
+        B:
+          data: pixelmon_fast_ball
+          name: "速度球"
+          lore:
+            - ""
+        C:
+          data: pixelmon_repeat_ball
+          name: "重复球"
+          lore:
+            - ""
+        D:
+          data: pixelmon_timer_ball
+          name: "计时球"
+          lore:
+            - ""
+        E:
+          data: pixelmon_nest_ball
+          name: "巢穴球"
+          lore:
+            - ""
+        F:
+          data: pixelmon_net_ball
+          name: "捕网球"
+          lore:
+            - ""
+        G:
+          data: pixelmon_dive_ball
+          name: "潜水球"
+          lore:
+            - ""
+        H:
+          data: pixelmon_luxury_ball
+          name: "豪华球"
+          lore:
+            - ""
+        I:
+          data: pixelmon_heal_ball
+          name: "治愈球"
+          lore:
+            - ""
+        J:
+          data: pixelmon_dusk_ball
+          name: "黑暗球"
+          lore:
+            - ""
+        K:
+          data: pixelmon_premier_ball
+          name: "纪念球"
+          lore:
+            - ""
+        L:
+          data: pixelmon_sport_ball
+          name: "竞赛球"
+          lore:
+            - ""
+        M:
+          data: pixelmon_quick_ball
+          name: "先机球"
+          lore:
+            - ""
+
+        N:
+          data: pixelmon_park_ball
+          name: "诱饵球"
+          lore:
+            - ""
+        O:
+          data: pixelmon_lure_ball
+          name: "公园球"
+          lore:
+            - ""
+        P:
+          data: pixelmon_cherish_ball
+          name: "贵重球"
+          lore:
+            - ""
+        Q:
+          data: pixelmon_gs_ball
+          name: "GS球"
+          lore:
+            - ""
+        R:
+          data: pixelmon_beast_ball
+          name: "究极球"
+          lore:
+            - ""
+        S:
+          data: pixelmon_dream_ball
+          name: "梦境球"
+          lore:
+            - ""
+    anyNature:
+      title: "&8选择你需要的性格吧"
+      slot:
+        # 1代表宝可梦在背包的位置 以此类推
+        - ""
+        - " 1234567  "
+        - " 89ABCDE  "
+        - " FGHIJKL   "
+        - " MNOP  "
+        - ""
+      item:
+        1:
+          data: paper
+          name: "勤奋"
+          lore:
+            - ""
+        2:
+          data: paper
+          name: "认真"
+          lore:
+            - ""
+        3:
+          data: paper
+          name: "坦率"
+          lore:
+            - ""
+        4:
+          data: paper
+          name: "害羞"
+          lore:
+            - ""
+        5:
+          data: paper
+          name: "浮躁"
+          lore:
+            - ""
+        6:
+          data: paper
+          name: "怕寂寞"
+          lore:
+            - ""
+        7:
+          data: paper
+          name: "勇敢"
+          lore:
+            - ""
+        8:
+          data: paper
+          name: "固执"
+          lore:
+            - ""
+        9:
+          data: paper
+          name: "顽皮"
+          lore:
+            - ""
+        A:
+          data: paper
+          name: "大胆"
+          lore:
+            - ""
+        B:
+          data: paper
+          name: "悠闲"
+          lore:
+            - ""
+        C:
+          data: paper
+          name: "淘气"
+          lore:
+            - ""
+        D:
+          data: paper
+          name: "乐天"
+          lore:
+            - ""
+        E:
+          data: paper
+          name: "胆小"
+          lore:
+            - ""
+        F:
+          data: paper
+          name: "急躁"
+          lore:
+            - ""
+        G:
+          data: paper
+          name: "爽朗"
+          lore:
+            - ""
+        H:
+          data: paper
+          name: "天真"
+          lore:
+            - ""
+        I:
+          data: paper
+          name: "内敛"
+          lore:
+            - ""
+        J:
+          data: paper
+          name: "慢吞吞"
+          lore:
+            - ""
+        K:
+          data: paper
+          name: "冷静"
+          lore:
+            - ""
+        L:
+          data: paper
+          name: "马虎"
+          lore:
+            - ""
+        M:
+          data: paper
+          name: "温和"
+          lore:
+            - ""
+
+        N:
+          data: paper
+          name: "温顺"
+          lore:
+            - ""
+        O:
+          data: paper
+          name: "自大"
+          lore:
+            - ""
+        P:
+          data: paper
+          name: "慎重"
+          lore:
+            - ""
+    move:
+      title: "&8选择你需要的技能吧{page}"
+      name: "&a{move}"
+      lore:
+        - "&e修改为{move}"
+    form:
+      title: "&8选择你需要的形态吧"
+      name: "&a{form}"
+      lore:
+        - "&e修改为{form}"
+    formLegendary:
+      title: "&8选择你需要的神兽形态吧"
+      name: "&a{form}"
+      lore:
+        - "&e修改为{form}"
+    formCommon:
+      title: "&8选择你需要的普通宝可梦形态吧"
+      name: "&a{form}"
+      lore:
+        - "&e修改为{form}"
+    formDetail:
+      title: "&8选择你要指定的宝可梦形态吧"
+      name: "&a{form}"
+      lore:
+        - "&e修改为{form}"

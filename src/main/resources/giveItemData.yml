@@ -1,0 +1,82 @@
+#是否开启特殊材质 false为不开启 true为开启
+mt:
+  enableData: false
+  data: paper
+shiny:
+  enableData: false
+  data: paper
+unShiny:
+  enableData: false
+  data: paper
+maxLevel:
+  enableData: false
+  data: paper
+clearLevel:
+  enableData: false
+  data: paper
+gender:
+  enableData: false
+  data: paper
+clearEvs:
+  enableData: false
+  data: paper
+maxIvs:
+  enableData: false
+  data: paper
+anyIvs:
+  enableData: false
+  data: paper
+anyZeroIvs:
+  enableData: false
+  data: paper
+anyEvs:
+  enableData: false
+  data: paper
+rdGrowth:
+  enableData: false
+  data: paper
+anyGrowth:
+  enableData: false
+  data: paper
+anyNature:
+  enableData: false
+  data: paper
+rdNature:
+  enableData: false
+  data: paper
+form:
+  enableData: false
+  data: paper
+rdForm:
+  enableData: false
+  data: paper
+formLegendary:
+  enableData: false
+  data: paper
+formCommon:
+  enableData: false
+  data: paper
+formDetail:
+  enableData: false
+  data: paper
+move:
+  enableData: false
+  data: paper
+pokeBall:
+  enableData: false
+  data: paper
+bind:
+  enableData: false
+  data: paper
+unbind:
+  enableData: false
+  data: paper
+breed:
+  enableData: false
+  data: paper
+unBreed:
+  enableData: false
+  data: paper
+hatch:
+  enableData: false
+  data: paper
