@@ -59,29 +59,32 @@ public class CommandCard implements CommandExecutor, TabExecutor {
     }
 
     private boolean addItemToPlayer(CommandSender sender, String[] args) {
-        String playername = args[0];
+        String playerName = args[0];
         String cardName = args[1];
-        Player p = getPlayer(playername);
-        int num = parseNumber(args[2], sender, playername, cardName);
+        Player p = getPlayer(playerName);
+        int num = parseNumber(args[2], sender, playerName, cardName);
+        return handleAddItemByPlayerIsNull(sender, playerName, cardName, p, num);
+    }
 
+    private boolean handleAddItemByPlayerIsNull(CommandSender sender, String playerName, String cardName, Player p, int num) {
         if (p == null) {
-            YmlUtil.sendColorItemMessage(sender, "noPlayer", playername, cardName, num);
+            YmlUtil.sendColorItemMessage(sender, "noPlayer", playerName, cardName, num);
             return true;
         }
         try {
             p.getInventory().addItem(ItemUtil.addItemToPlayer(num, cardName));
-            YmlUtil.sendColorItemMessage(sender, "success", playername, cardName, num);
+            YmlUtil.sendColorItemMessage(sender, "success", playerName, cardName, num);
         } catch (Exception e) {
-            YmlUtil.sendColorItemMessage(sender, "error", playername, cardName, num);
+            YmlUtil.sendColorItemMessage(sender, "error", playerName, cardName, num);
         }
         return false;
     }
 
-    private int parseNumber(String arg, CommandSender sender, String playername, String cardName) {
+    private int parseNumber(String arg, CommandSender sender, String playerName, String cardName) {
         try {
             return Integer.parseInt(arg);
         } catch (Exception e) {
-            YmlUtil.sendColorItemMessage(sender, "error", playername, cardName, 1);
+            YmlUtil.sendColorItemMessage(sender, "error", playerName, cardName, 1);
             return 1;
         }
     }
@@ -111,26 +114,16 @@ public class CommandCard implements CommandExecutor, TabExecutor {
     }
 
     private boolean cardBooleanForMessage(CommandSender sender, String[] args) {
-        String playername = args[0];
+        String playerName = args[0];
         String cardName = args[1];
-        Player p = getPlayer(playername);
+        Player p = getPlayer(playerName);
         int num = 1;
 
-        if (p == null) {
-            YmlUtil.sendColorItemMessage(sender, "noPlayer", playername, cardName, num);
-            return true;
-        }
-        try {
-            p.getInventory().addItem(ItemUtil.addItemToPlayer(num, cardName));
-            YmlUtil.sendColorItemMessage(sender, "success", playername, cardName, num);
-        } catch (Exception e) {
-            YmlUtil.sendColorItemMessage(sender, "error", playername, cardName, num);
-        }
-        return false;
+        return handleAddItemByPlayerIsNull(sender, playerName, cardName, p, num);
     }
 
-    private Player getPlayer(String playername) {
-        return Bukkit.getPlayer(playername);
+    private Player getPlayer(String playerName) {
+        return Bukkit.getPlayer(playerName);
     }
 
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

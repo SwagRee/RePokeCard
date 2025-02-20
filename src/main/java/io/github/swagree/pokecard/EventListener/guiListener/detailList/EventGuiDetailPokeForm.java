@@ -1,9 +1,9 @@
-package io.github.swagree.pokecard.event.DetailList;
+package io.github.swagree.pokecard.EventListener.guiListener.detailList;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.enums.forms.IEnumForm;
 import io.github.swagree.pokecard.Main;
-import io.github.swagree.pokecard.event.EventGuiMain;
+import io.github.swagree.pokecard.EventListener.guiListener.EventGuiMain;
 import io.github.swagree.pokecard.gui.guiHolder.NeedNextHolder;
 import io.github.swagree.pokecard.util.ItemUtil;
 import io.github.swagree.pokecard.util.YmlUtil;
@@ -18,7 +18,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventGuiDetailPokeForm implements Listener {
+public class
+EventGuiDetailPokeForm implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -43,7 +44,7 @@ public class EventGuiDetailPokeForm implements Listener {
         Pokemon pokemon = EventGuiMain.mapPlayerToPokemon.get(player);
 
         if (pokemon == null) {
-            player.sendMessage(ChatColor.RED + "宝可梦没有！");
+            player.sendMessage(ChatColor.RED + "没有宝可梦嘎嘎！");
             return;
         }
 
@@ -126,8 +127,6 @@ public class EventGuiDetailPokeForm implements Listener {
         ItemStack newItemStack = ItemUtil.createItem(cardName);
         if (ItemUtil.takeItem(player, newItemStack, cardName, pokemon, selectedForm.getLocalizedName())) {
             pokemon.setForm(selectedForm);
-            EventGuiMain.afterBindPokemon(player, pokemon, cardName);
-            EventGuiMain.afterUnBreedPokemon(player, pokemon, cardName);
         }
     }
 }

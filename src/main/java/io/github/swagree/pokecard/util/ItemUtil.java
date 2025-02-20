@@ -2,8 +2,10 @@ package io.github.swagree.pokecard.util;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import io.github.swagree.pokecard.Main;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -31,39 +33,87 @@ public class ItemUtil {
                 : Main.plugin.getConfig().getString("id");
 
         ItemStack itemStack = getItemStack(data);
-        ItemMeta itemMeta = itemStack.getItemMeta();
 
         itemStack.setAmount(num);
+
+
+
 
         String displayName = getCardDisplayName(cardName);
         if (displayName == null) {
             throw new Exception("Invalid card type: " + cardName);
         }
 
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
         itemMeta.setDisplayName(displayName);
         itemMeta.setLore(getCardLore(cardName));
         itemStack.setItemMeta(itemMeta);
 
+        itemStack = addNBToItemStack(itemStack);
         return itemStack;
+    }
+
+    private static ItemStack addNBToItemStack(ItemStack itemStack) {
+        net.minecraft.server.v1_12_R1.ItemStack nmsItemStack = addNBT(itemStack);
+        itemStack = CraftItemStack.asBukkitCopy(nmsItemStack);
+        return itemStack;
+    }
+
+    private static net.minecraft.server.v1_12_R1.ItemStack addNBT(ItemStack itemStack) {
+        net.minecraft.server.v1_12_R1.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(itemStack);
+        NBTTagCompound nbtTagCompound = nmsItemStack.hasTag() ? nmsItemStack.getTag() : new NBTTagCompound();
+        nbtTagCompound.setString("sakura_auto_bind", "0");
+        nmsItemStack.setTag(nbtTagCompound);
+        return nmsItemStack;
     }
 
     /**
      * 从配置中获取卡片显示名称。
      */
     private static String getCardDisplayName(String cardName) {
-        return Optional.ofNullable(Main.plugin.getConfig().getString(cardName + ".name"))
-                .map(name -> name.replace("&", "§"))
-                .orElse(null);
+        // 获取配置文件中所有键的集合
+        Set<String> keys = Main.plugin.getConfig().getKeys(true);
+        // 将传入的 cardName 转换为小写，以便进行大小写不敏感的匹配
+        String lowerCardName = cardName.toLowerCase();
+        // 找到匹配的键
+        String matchedKey = null;
+        for (String key : keys) {
+            if (key.toLowerCase().equals(lowerCardName + ".name")) {
+                matchedKey = key;
+                break;
+            }
+        }
+        // 如果找到了匹配的键，获取对应的值并进行替换
+        if (matchedKey != null) {
+            return Optional.ofNullable(Main.plugin.getConfig().getString(matchedKey))
+                    .map(name -> name.replace("&", "§"))
+                    .orElse(null);
+        }
+        // 如果没有找到匹配的键，返回null
+        return null;
     }
 
     /**
      * 从配置中获取卡片的 Lore 列表。
      */
     private static List<String> getCardLore(String cardName) {
-        return Main.plugin.getConfig().getStringList(cardName + ".lore")
-                .stream()
-                .map(lore -> lore.replace("&", "§"))
-                .collect(Collectors.toList());
+        Set<String> keys = Main.plugin.getConfig().getKeys(true);
+        String lowerCardName = cardName.toLowerCase();
+        String matchedKey = null;
+        for (String key : keys) {
+            if (key.toLowerCase().equals(lowerCardName + ".lore")) {
+                matchedKey = key;
+                break;
+            }
+        }
+        if (matchedKey != null) {
+            return Main.plugin.getConfig().getStringList(matchedKey)
+                    .stream()
+                    .map(lore -> lore.replace("&", "§"))
+                    .collect(Collectors.toList());
+        }
+        return null;
     }
 
     /**
@@ -113,6 +163,8 @@ public class ItemUtil {
                     YmlUtil.sendColorMessage(player, cardName, pokemon, extra);
                     toExecuteCommand(player, cardName);
                     player.closeInventory();
+                    afterBindPokemon(player, pokemon, cardName);
+                    afterUnBreedPokemon(player, pokemon, cardName);
                     return true;
                 } else {
                     YmlUtil.sendColorNoItem(player);
@@ -170,5 +222,22 @@ public class ItemUtil {
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
+    }
+
+    public static void afterBindPokemon(Player player, Pokemon pokemon, String cardName) {
+        boolean flag = YmlUtil.afterBindList.getBoolean(cardName);
+        if (flag) {
+            pokemon.addSpecFlag("untradeable");
+            player.sendMessage(YmlUtil.afterBindList.getString("message").replace("&", "§"));
+        }
+    }
+
+
+    public static void afterUnBreedPokemon(Player player, Pokemon pokemon, String cardName) {
+        boolean flag = YmlUtil.afterUnBreedFileList.getBoolean(cardName);
+        if (flag) {
+            pokemon.addSpecFlag("unbreedable");
+            player.sendMessage(YmlUtil.afterUnBreedFileList.getString("message").replace("&", "§"));
+        }
     }
 }

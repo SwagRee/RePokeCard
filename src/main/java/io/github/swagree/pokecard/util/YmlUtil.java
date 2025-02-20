@@ -62,6 +62,7 @@ public class YmlUtil {
     public static void setItemData(YamlConfiguration giveItemDataFileList) {
         YmlUtil.giveItemDataFileList = giveItemDataFileList;
     }
+
     public static void setCommands(YamlConfiguration commandsFileConfig) {
         YmlUtil.commandsFileConfig = commandsFileConfig;
     }
@@ -72,7 +73,7 @@ public class YmlUtil {
     }
 
     public static void sendColorMessage(Player player, String cardName, Pokemon pokemon, String extra) {
-        if(extra == null){
+        if (extra == null) {
             player.sendMessage(transToColor(
                     YmlUtil.message.getString("Message." + cardName)
                             .replace("%pokemon%", pokemon.getLocalizedName())
@@ -166,7 +167,6 @@ public class YmlUtil {
                 }
             }
         }
-
         return null; // 未匹配到返回 null
     }
 

@@ -7,7 +7,7 @@ import java.util.Map;
  * 枚举类，枚举所有卡的名称和对应的中文名
  * 方便后续调用显示
  */
-public enum EnumCardName {
+public enum  EnumCardName {
 
     Mt("mt", "梦特"),
     Shiny("shiny", "闪光"),
@@ -35,8 +35,7 @@ public enum EnumCardName {
     UnBind("unbind", "解绑"),
     Breed("breed", "绝育"),
     UnBreed("unBreed", "解绝育"),
-    Hatch("hatch", "秒孵"),
-    Ability("Ability", "特性");
+    Hatch("hatch", "秒孵");
 
     private final String cardName;
     private final String cardNameCN;

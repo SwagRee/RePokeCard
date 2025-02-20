@@ -5,8 +5,6 @@ import com.pixelmonmod.pixelmon.entities.pixelmon.stats.StatsType;
 import com.pixelmonmod.pixelmon.items.ItemPixelmonSprite;
 import io.github.swagree.pokecard.Main;
 import io.github.swagree.pokecard.gui.guiHolder.OnlyPageHolder;
-import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
@@ -68,10 +66,10 @@ public class GuiMain {
     private static void setPokemonLore(ItemMeta pmeta, Player player, Pokemon pokemon) {
         List<String> lores = Main.plugin.getConfig().getStringList("lore");
         List<String> formattedLores = new ArrayList<>();
+        String formattedLore = "";
 
         for (String lore : lores) {
-            String formattedLore = PlaceholderAPI.setPlaceholders(player, lore);
-            formattedLore = ChatColor.translateAlternateColorCodes('&', formattedLore)
+            formattedLore = lore
                     .replace("%LEVEL%", String.valueOf(pokemon.getLevel()))
                     .replace("%IVS_HP%", String.valueOf(pokemon.getIVs().getStat(StatsType.HP)))
                     .replace("%IVS_Attack%", String.valueOf(pokemon.getIVs().getStat(StatsType.Attack)))
@@ -93,7 +91,7 @@ public class GuiMain {
                     .replace("%Gender%", pokemon.getGender().getLocalizedName())
                     .replace("%Nick_Name%", pokemon.getNickname() != null ? pokemon.getNickname() : "无");
 
-            formattedLores.add(formattedLore);
+            formattedLores.add(formattedLore.replace("&","§"));
         }
 
         pmeta.setLore(formattedLores);

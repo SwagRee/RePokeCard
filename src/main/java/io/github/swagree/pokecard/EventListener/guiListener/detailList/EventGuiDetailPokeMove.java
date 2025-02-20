@@ -1,9 +1,9 @@
-package io.github.swagree.pokecard.event.DetailList;
+package io.github.swagree.pokecard.EventListener.guiListener.detailList;
 
 import com.pixelmonmod.pixelmon.api.pokemon.LearnMoveController;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.battles.attacks.Attack;
-import io.github.swagree.pokecard.event.EventGuiMain;
+import io.github.swagree.pokecard.EventListener.guiListener.EventGuiMain;
 import io.github.swagree.pokecard.gui.guiHolder.NeedNextHolder;
 import io.github.swagree.pokecard.util.ItemUtil;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -63,13 +63,10 @@ public class EventGuiDetailPokeMove implements Listener {
             if (ItemUtil.takeItem(player, newItemStack, cardName, pokemon, null)) {
 
                 LearnMoveController.sendLearnMove((EntityPlayerMP) (Object) handlePlayer, pokemon.getUUID(), allMoves.get(moveIndex).getActualMove());
-                EventGuiMain.afterBindPokemon(player, pokemon, cardName);
             }
         } else {
             if (ItemUtil.takeItem(player, newItemStack, cardName, pokemon, null)) {
                 pokemon.getMoveset().add(allMoves.get(moveIndex));
-                EventGuiMain.afterBindPokemon(player, pokemon, cardName);
-                EventGuiMain.afterUnBreedPokemon(player, pokemon, cardName);
             }
         }
     }
